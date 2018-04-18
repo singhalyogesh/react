@@ -1,7 +1,3 @@
-## react-native-truecaller Features 
-* Supports both Android and iOS
-
-
 ## Getting started
 
 - `npm install react-native-truecaller --save` or  `yarn add react-native-truecaller`
