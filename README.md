@@ -7,22 +7,21 @@
 - `npm install react-native-truecaller --save` or  `yarn add react-native-truecaller`
 - for Linking both android and ios run `react-native link` 
   
-## Android Configuration
+## Basic Configuration
 
-You can sign up at https://developer.truecaller.com/sign-up and Create you APP KEY (Partner Key).
+You can sign up at https://developer.truecaller.com/sign-up and Create you App Key (Partner Key).
 
 #### Integrating latest Truecaller SDK in your android module
 
-1. Download the project zip file from the [Android SDK release section](https://github.com/truecaller/ios-sdk/releases)
+1. Download the project zip file from the [Android SDK release section](https://github.com/truecaller/android-sdk)
 2. Unzip the file
-3. Copy the SDK .aar File.
+3. Copy the SDK .aar File in your project directory
 4. Add the above extracted .aar file into libs folder of your react-native-truecaller (path : react-native-truecaller -> android -> libs -> .arr file)
 5. Add it in react-native-truecaller gradle file 
-(Note) if any new changes in sdk then replace this .aar file with latest one.
+(Note) To update the SDK file, simply replace this .aar file with latest one
 
 	```bash
 	compile files('libs/truesdk-0.6.aar')
-	
 	```
 
 6. Add you partner key in react-native-truecaller manifest file
@@ -31,20 +30,19 @@ You can sign up at https://developer.truecaller.com/sign-up and Create you APP K
 	<meta-data android:name="com.truecaller.android.sdk.PartnerKey" android:value="@string/YourPartnerKey"/>
 	```
 
-7. Example is same as IOS Given below.
+7. Example is same as iOS given below
 
 ## IOS Configuration
 
-You should have:
+Please ensure the following things before integrating:
 
-1. Truecaller app installed
-2. App ID in the "Apple development portal". If you do not have App ID yet, then open Project -> Capabilities -> Enable Associated domains. New app id will be automatically created by Xcode.
-3. Sign up at https://developer.truecaller.com/sign-up
-4. TrueCaller SDK Already Available in RCTTruecaller Libray *no need to Integrates TrueCaller Sdk to project  unelse new version of SDK avail*
+1. You have the app ID in the "Apple development portal". If you do not have App ID yet, then open Project -> Capabilities -> Enable Associated domains. New app id will be automatically created by Xcode.
+2. Sign up at https://developer.truecaller.com/sign-up
+3. TrueCaller SDK Already Available in RCTTruecaller Libray *no need to Integrates TrueCaller Sdk to project  unelse new version of SDK avail*
 
 #### Integrating  Latest TrueCaller SDK in our IOS module
 
-1. Download the project zip file from the [IOS SDK release section](https://github.com/truecaller/ios-sdk/releases)
+1. Download the project zip file from the [iOS SDK release section](https://github.com/truecaller/ios-sdk/releases)
 2. Unzip the file
 3. Remove Old version SDK folder
 4. Copy the TruecallerSDK project files into RCTTruecaller Libray (TrueSDK directory, TrueSDKTests directory and TrueSDK.xcodeproj)
@@ -90,13 +88,11 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 3. For Applinks and Appkey will be   Initialized in react-native code(`TRUECALLER.initializeClientIOS(APPKEY,APPLINKS)`)
 
    
-## Example 
+## Example Snippet to Initiate TrueClient with your react app 
 
-  - [Sample APP](https://github.com/truecaller/ios-sdk)
 
   ``` sample
   import TRUECALLER,{TRUECALLEREvent} from "react-native-truecaller"
-
 
 	type Props = {};
 	export default class App extends Component<Props> 
@@ -146,21 +142,22 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
  ```
 - `TRUECALLER.initializeClient()` (set callback to reach react library in android)
 - ` TRUECALLER.initializeClientIOS(`APPKEY`,`APPLINKS`)` (set APPKEY and  APPLINKS  for TrueSDK  And set delegate  to reach react library in ios )
-- `TRUECALLER.requestTrueProfile()` this is method to request profile form truecaller app
+- `TRUECALLER.requestTrueProfile()`  // method to request profile form Truecaller app
 -  `TRUECALLER.on(TRUECALLEREvent.TrueProfileResponse, (profile) => 
     {
-    }` after fetching profile callback will call in both android and ios 
+    }` after fetching profile, this callback would be returned in both android and ios 
 - `TRUECALLER.on(TRUECALLEREvent.TrueProfileResponseError, (error) => 
     {
     }); `
-     this callback will call if any error occurs  
-- we call access all `profile  value` here the details 
+     this callback will be called in case of any error 
+     
+- To access all `profile  value` from the profile object in your react app, use the following paramters - 
 
   ```
   profile.firstName  
   profile.lastName
   profile.phoneNumber
-  profile.gender * here gender is boolean value
+  profile.gender
   profile.street
   profile.city
   profile.zipcode
@@ -174,12 +171,11 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
   profile.companyName
   profile.jobTitle
   profile.payload
-  profile.signature **
-  profile.signatureAlgorithm **
+  profile.signature
+  profile.signatureAlgorithm
   profile.requestNonce
   profile.isSimChanged
   profile.verificationMode
   
-  ** is not available  in ios instead we will get empty string
   ```
   
