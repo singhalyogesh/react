@@ -1,30 +1,24 @@
 ## react-native-truecaller Features 
-* Support both IOS and Android
+* Supports both Android and iOS
+
 
 ## Getting started
 
-
-
 - `npm install react-native-truecaller --save` or  `yarn add react-native-truecaller`
-- for Linking both  android and ios run  `react-native link` 
+- for Linking both android and ios run `react-native link` 
   
 ## Android Configuration
 
+You can sign up at https://developer.truecaller.com/sign-up and Create you APP KEY (Partner Key).
 
-You should have:
-
-1. Truecaller app installed
-2. Sign up at https://developer.truecaller.com/sign-up and Create you APP KEY    (Partner Key).
-
-
-#### Integrating  Latest TrueCaller SDK in our android module
-
+#### Integrating latest Truecaller SDK in your android module
 
 1. Download the project zip file from the [Android SDK release section](https://github.com/truecaller/ios-sdk/releases)
 2. Unzip the file
-3. Copy the TruecallerSDK (.arr) File.
-4. Add the above extracted .arr file into libs folder of your react-native-truecaller  (path : react-native-truecaller -> android -> libs -> .arr        file)
-5. Add it in react-native-truecaller gradle file (Note) if any new changes in sdk then replace this .arr file with latest one.
+3. Copy the SDK .aar File.
+4. Add the above extracted .aar file into libs folder of your react-native-truecaller (path : react-native-truecaller -> android -> libs -> .arr file)
+5. Add it in react-native-truecaller gradle file 
+(Note) if any new changes in sdk then replace this .aar file with latest one.
 
 	```bash
 	compile files('libs/truesdk-0.6.aar')
@@ -39,12 +33,7 @@ You should have:
 
 7. Example is same as IOS Given below.
 
-
-
-
-
 ## IOS Configuration
-
 
 You should have:
 
@@ -60,7 +49,6 @@ You should have:
 3. Remove Old version SDK folder
 4. Copy the TruecallerSDK project files into RCTTruecaller Libray (TrueSDK directory, TrueSDKTests directory and TrueSDK.xcodeproj)
 5. Drag and drop TrueSDK.xcodeproj into RCTTruecaller Libray(ie add it as a subproject to your main project).
-
 
 
 ### Usage
@@ -81,13 +69,6 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 **Important:** Replace the '**https://**' part from the provided app link with "**applinks:**". ie _`https://si44524554ef8e45b5aa83ced4e96d5xxx.truecallerdevs.com`_ should become _`applinks:si44524554ef8e45b5aa83ced4e96d5xxx.truecallerdevs.com`_ while adding to entitlements.
 
 (Note that there is **no** _http://_ or _https://_ prefix when setting up the applinks:)
-
-
-
-
-
-  
-
 
 
 
