@@ -1,3 +1,5 @@
+# React Native Bridge for Truecaller SDK
+
 ## Getting started
 
 - `npm install react-native-truecaller --save` or  `yarn add react-native-truecaller`
@@ -28,15 +30,13 @@ You can sign up at https://developer.truecaller.com/sign-up and Create you App K
 
 7. Example is same as iOS given below
 
-## IOS Configuration
+#### Integrating latest Truecaller SDK in your iOS module
 
 Please ensure the following things before integrating:
 
 1. You have the app ID in the "Apple development portal". If you do not have App ID yet, then open Project -> Capabilities -> Enable Associated domains. New app id will be automatically created by Xcode.
 2. Sign up at https://developer.truecaller.com/sign-up
 3. Truecaller SDK Already Available in RCTTruecaller Libray *no need to Integrates Truecaller sdk to project  unelse new version of SDK avail*
-
-#### Integrating  Latest Truecaller SDK in our IOS module
 
 1. Download the project zip file from the [iOS SDK release section](https://github.com/truecaller/ios-sdk/releases)
 2. Unzip the file
@@ -45,7 +45,7 @@ Please ensure the following things before integrating:
 5. Drag and drop TrueSDK.xcodeproj into RCTTruecaller Libray(ie add it as a subproject to your main project).
 
 
-### Usage
+#### Usage
 
 Add the entry truesdk under LSApplicationQueriesSchemes in into your Info.plist file
 
@@ -174,4 +174,3 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
   profile.verificationMode
   
   ```
-  
