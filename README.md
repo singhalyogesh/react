@@ -34,9 +34,9 @@ Please ensure the following things before integrating:
 
 1. You have the app ID in the "Apple development portal". If you do not have App ID yet, then open Project -> Capabilities -> Enable Associated domains. New app id will be automatically created by Xcode.
 2. Sign up at https://developer.truecaller.com/sign-up
-3. TrueCaller SDK Already Available in RCTTruecaller Libray *no need to Integrates TrueCaller Sdk to project  unelse new version of SDK avail*
+3. Truecaller SDK Already Available in RCTTruecaller Libray *no need to Integrates Truecaller sdk to project  unelse new version of SDK avail*
 
-#### Integrating  Latest TrueCaller SDK in our IOS module
+#### Integrating  Latest Truecaller SDK in our IOS module
 
 1. Download the project zip file from the [iOS SDK release section](https://github.com/truecaller/ios-sdk/releases)
 2. Unzip the file
