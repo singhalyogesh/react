@@ -3,7 +3,8 @@
 ## Getting started
 
 - Run the following command to add the react-native-truecaller dependency with your react app
-	`npm install react-native-truecaller --save` or `yarn add react-native-truecaller`
+
+`npm install react-native-truecaller --save` or `yarn add react-native-truecaller`
 
 - for linking both android and ios, run the following command
 `
@@ -78,7 +79,8 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
     #import "TrueSDK/TrueSDK.h"
     ```
 
-2. In AppDelegate implement the method `application:continueUserActivity:restorationHandler:` and call the corresponding method of the `[TCTrueSDK sharedManager]`. If the method returns false that means the activity need not be addressed by Truecaller SDK and you can handle it as desired.
+2. In AppDelegate implement the method `application:continueUserActivity:restorationHandler:` and call the corresponding method of the `[TCTrueSDK sharedManager]`. 
+If the method returns false that means the activity need not be addressed by Truecaller SDK and you can handle it as desired.
 
     ```objectivec
     - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *restorableObjects))restorationHandler {
@@ -86,14 +88,14 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
     }
     ```
 
-3. For Applinks and Appkey will be initialized in react-native code (`TRUECALLER.initializeClientIOS(APPKEY,APPLINKS)`)
+3. Applinks and Appkey will be initialized in react-native code (`TRUECALLER.initializeClientIOS(APPKEY,APPLINKS)`)
 
 
 ## Example Snippet to initiate TrueClient with your react app 
 
   ``` sample
   
-  	import TRUECALLER,{TRUECALLEREvent} from "react-native-truecaller"
+  import TRUECALLER,{TRUECALLEREvent} from "react-native-truecaller"
 
 	type Props = {};
 	export default class App extends Component<Props> 
@@ -166,9 +168,7 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
     		// this callback will be called in case of any error
 	});
 	
-```
-    `
-      
+```   
      
 - To access the user profile details from the profile object in your react app, use the following paramters - 
 
