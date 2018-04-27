@@ -162,8 +162,8 @@ If the method returns false that means the activity need not be addressed by Tru
 	{
 		// after fetching profile, this callback would be returned in both android and ios
 	}
-    
-    	TRUECALLER.on(TRUECALLEREvent.TrueProfileResponseError, (error) => 
+	
+	TRUECALLER.on(TRUECALLEREvent.TrueProfileResponseError, (error) => 
 	{
 		// this callback will be called in case of any error
 	});
