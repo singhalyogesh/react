@@ -133,17 +133,31 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 	    TRUECALLER.requestTrueProfile();
   }
  ```
-- `TRUECALLER.initializeClient()` (set callback to reach react library in android )
-- ` TRUECALLER.initializeClientIOS(`APPKEY`,`APPLINKS`)` (set APPKEY and  APPLINKS  for TrueSDK  And set delegate  to reach react library in ios )
-- `TRUECALLER.requestTrueProfile()`  // method to request profile form Truecaller app
+ 
+- `TRUECALLER.initializeClient()
+	(set callback to reach react library in android )
+   `
+	
+- ` TRUECALLER.initializeClientIOS(`APPKEY`,`APPLINKS`)
+	(set APPKEY and  APPLINKS  for TrueSDK  And set delegate  to reach react library in ios )
+	`	
+	
+- `TRUECALLER.requestTrueProfile()  
+	// method to request profile form Truecaller app
+  `
+	
 -  `TRUECALLER.on(TRUECALLEREvent.TrueProfileResponse, (profile) => 
+    
     {
     	// after fetching profile, this callback would be returned in both android and ios
-    }`  
+    }`
+    
 - `TRUECALLER.on(TRUECALLEREvent.TrueProfileResponseError, (error) => 
+    
     {
     	// this callback will be called in case of any error
-    }); `
+    });
+    `
       
      
 - To access the user profile details from the profile object in your react app, use the following paramters - 
