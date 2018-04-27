@@ -95,7 +95,7 @@ If the method returns false that means the activity need not be addressed by Tru
 
   ``` java
   
-  import TRUECALLER,{TRUECALLEREvent} from "react-native-truecaller"
+  import TRUECALLER, {TRUECALLEREvent} from "react-native-truecaller"
 
 	type Props = {};
 	export default class App extends Component<Props> 
