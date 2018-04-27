@@ -1,9 +1,14 @@
-# React Native Bridge for Truecaller SDK
+# Using Truecaller SDK with your React App
 
 ## Getting started
 
-- `npm install react-native-truecaller --save` or  `yarn add react-native-truecaller`
-- for Linking both android and ios run `react-native link` 
+- Run the following command to add the react-native-truecaller dependency with your react app
+	`npm install react-native-truecaller --save` or `yarn add react-native-truecaller`
+
+- for linking both android and ios, run the following command
+`
+	react-native link
+`
   
 ### Basic Configuration
 
@@ -18,13 +23,15 @@ To ensure the authenticity of the interactions between your app and Truecaller, 
 5. Add it in react-native-truecaller gradle file
 
 (Note) To update the SDK file, simply replace this .aar file with latest one
-	```bash
+```
 	compile files('libs/truesdk-0.6.aar')
-	```
+```
+	
 6. Add you partner key in react-native-truecaller manifest file
-	```
+
+```
 	<meta-data android:name="com.truecaller.android.sdk.PartnerKey" android:value="@string/YourPartnerKey"/>
-	```
+```
 
 7. Open your strings.xml file. Example path: /app/src/main/res/values/strings.xml and add a new string with the name "partnerKey" and value as your "PartnerKey"
 
@@ -85,78 +92,81 @@ Add the associated domain provided by Truecaller (for example applinks:si4452455
 ## Example Snippet to initiate TrueClient with your react app 
 
   ``` sample
-  import TRUECALLER,{TRUECALLEREvent} from "react-native-truecaller"
+  
+  	import TRUECALLER,{TRUECALLEREvent} from "react-native-truecaller"
 
 	type Props = {};
 	export default class App extends Component<Props> 
 	{
-  	constructor(props) 
-  {
-		super(props);
-		this.state = { name :"", phone:"", address:"", email:"", job:"", company:"", countryCode:"", gender:"", url:avatar, };
+  		constructor(props) 
+  		{
+			super(props);
+			this.state = { name :"", phone:"", address:"", email:"", job:"", company:"", countryCode:"", gender:"", url:avatar, 
+		};
 		this.onButtonPress=this.onButtonPress.bind(this)
-  }
-   componentDidMount()
-  {
-    
-	    if(Platform.OS=="ios")
-	    {
-	       TRUECALLER.initializeClientIOS(`APPKEY`,`APPLINKS`)
-	    }
-	    else
-	    {
-	      TRUECALLER.initializeClient();
-	    }
-  }
-  onButtonPress()
-  {
-	   
-	    TRUECALLER.on(TRUECALLEREvent.TrueProfileResponse, (profile) => 
-	    {
-	      
-	      this.setState({
-	        name:profile.firstName+" "+profile.lastName,
-	        phone:profile.phoneNumber,
-	        address:profile.city,
-	        email:profile.email,
-	        job:profile.jobTitle,
-	        company:profile.companyName,
-	        countryCode:profile.countryCode,
-	         gender:profile.gender?"Male":"Female",
-	        url:{uri:profile.avatarUrl}
-	      })
-	    });
-	    TRUECALLER.on(TRUECALLEREvent.TrueProfileResponseError, (error) => 
-	    {
-	     Toast.show(error.profile,Toast.SHORT);
-	    });
-	    TRUECALLER.requestTrueProfile();
-  }
+  	}
+	
+	componentDidMount()
+	{
+		if(Platform.OS=="ios"){
+			TRUECALLER.initializeClientIOS(`APPKEY`,`APPLINKS`)
+		}
+		else{
+			TRUECALLER.initializeClient();
+		}
+	}
+	
+	onButtonPress()
+	{
+		TRUECALLER.on(TRUECALLEREvent.TrueProfileResponse, (profile) => 
+		{
+			this.setState({
+				name:profile.firstName+" "+profile.lastName,
+				phone:profile.phoneNumber,
+				address:profile.city,
+				email:profile.email,
+				job:profile.jobTitle,
+				company:profile.companyName,
+				countryCode:profile.countryCode,
+				gender:profile.gender?"Male":"Female",
+				url:{uri:profile.avatarUrl}
+			})
+		});
+		
+		TRUECALLER.on(TRUECALLEREvent.TrueProfileResponseError, (error) => 
+		{
+			Toast.show(error.profile,Toast.SHORT);
+		});
+		
+		TRUECALLER.requestTrueProfile();
+	}
+	
  ```
  
-- `TRUECALLER.initializeClient()
-	(set callback to reach react library in android )
-   `
+ Implement the following callbacks methods -
+ 
+ ```java
 	
-- ` TRUECALLER.initializeClientIOS(`APPKEY`,`APPLINKS`)
-	(set APPKEY and  APPLINKS  for TrueSDK  And set delegate  to reach react library in ios )
-	`	
+	TRUECALLER.initializeClient()
+		// set callback to reach react library in android
 	
-- `TRUECALLER.requestTrueProfile()  
-	// method to request profile form Truecaller app
-  `
+	TRUECALLER.initializeClientIOS(`APPKEY`,`APPLINKS`)
+		// set APPKEY and  APPLINKS  for TrueSDK  And set delegate  to reach react library in ios
 	
--  `TRUECALLER.on(TRUECALLEREvent.TrueProfileResponse, (profile) => 
+	TRUECALLER.requestTrueProfile()  
+		// method to request profile form Truecaller app
+	
+	TRUECALLER.on(TRUECALLEREvent.TrueProfileResponse, (profile) => 
+	{
+    		// after fetching profile, this callback would be returned in both android and ios
+    	}
     
-    {
-    	// after fetching profile, this callback would be returned in both android and ios
-    }`
-    
-- `TRUECALLER.on(TRUECALLEREvent.TrueProfileResponseError, (error) => 
-    
-    {
-    	// this callback will be called in case of any error
-    });
+    	TRUECALLER.on(TRUECALLEREvent.TrueProfileResponseError, (error) => 
+	{
+    		// this callback will be called in case of any error
+	});
+	
+```
     `
       
      
