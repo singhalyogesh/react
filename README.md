@@ -93,7 +93,7 @@ If the method returns false that means the activity need not be addressed by Tru
 
 ## Example Snippet to initiate TrueClient with your react app 
 
-  ``` sample
+  ``` java
   
   import TRUECALLER,{TRUECALLEREvent} from "react-native-truecaller"
 
